@@ -49,11 +49,7 @@ export const Carousel: FC<ICarouselProps> = (props) => {
                     >
                         {
                             containerWidth !== undefined && props.children.map((child, i) => {
-                                return (
-                                    <div className='w-full'>
-                                        {child}
-                                    </div>
-                                )
+                                return child
                             })
                         }
                     </div>
@@ -63,7 +59,7 @@ export const Carousel: FC<ICarouselProps> = (props) => {
                 {
                     props.children.map((_, i) => {
                         return (
-                            <div className={
+                            <div key={i} className={
                                 classnames(
                                     "rounded-full border w-2 h-2 bg-slate-400 cursor-pointer",
                                     {

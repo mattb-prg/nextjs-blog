@@ -34,12 +34,12 @@ export default function Home({ posts, topPosts }: IHomeProps) {
           <div className='flex justify-center'>
             <span className='text-3xl font-bold'>Popular</span>
           </div>
-          <Carousel children={topPosts.map((tp) => <TopPost post={tp} />)} />
+          <Carousel children={topPosts.map((tp) => <TopPost key={tp.id} post={tp} />)} />
         </section>
         <section className='container mx-auto space-y-3'>
           <h2 className='text-2xl font-bold text-center'>Posts</h2>
           <div className='grid grid-cols-1 lg:grid-cols-3 gap-14'>
-            {posts.map((post) => <HomePost postMatter={post} />)}
+            {posts.map((post) => <HomePost key={post.id} postMatter={post} />)}
           </div>
         </section>
       </div>
