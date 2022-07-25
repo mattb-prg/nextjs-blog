@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path'
 import gray from 'gray-matter';
-import remark from 'remark';
+import { remark } from 'remark';
 import html from 'remark-html'
 
 const postsDir = path.resolve(process.cwd(), 'posts')
