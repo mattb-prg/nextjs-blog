@@ -23,7 +23,9 @@ const Layout: FC<ILayoutProps> = ({ children }) => {
 
   return (
     <>
-      <Sidebar show={showSidebar} onClose={() => setShowSidebar(false)} />
+      <Sidebar show={showSidebar} onClose={() => setShowSidebar(false)} >
+        <div>test</div>
+      </Sidebar>
       <div onClick={() => showSidebar && setShowSidebar(!showSidebar)}>
         <Head>
           <link rel="icon" href="/favicon.ico" />
