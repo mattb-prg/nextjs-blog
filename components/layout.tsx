@@ -1,11 +1,13 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Link as CustomLink } from '../components/link'
 import { FC, useState } from 'react';
 import { NextRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Social } from './social';
 import { Sidebar } from './sidebar';
+import { categories, ICategory } from '../config';
 
 const name = 'Your Name';
 export const siteTitle = 'Next.js Sample Website';
@@ -15,7 +17,9 @@ interface ILayoutProps {
   home?: boolean
 }
 
-const Layout: FC<ILayoutProps> = ({ children }) => {
+const Layout: FC<ILayoutProps> = ({
+  children,
+}) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const onShowSidebar = () => {
     setShowSidebar(true)
@@ -24,7 +28,16 @@ const Layout: FC<ILayoutProps> = ({ children }) => {
   return (
     <>
       <Sidebar show={showSidebar} onClose={() => setShowSidebar(false)} >
-        <div>test</div>
+        <div className='flex flex-col items-center space-y-3'>
+          <CustomLink href={'/'}>
+            Home
+          </CustomLink>
+          {categories.map((cat) => (
+            <CustomLink key={cat.id} href={`/categories/${cat.id}`}>
+              {cat.name}
+            </CustomLink>
+          ))}
+        </div>
       </Sidebar>
       <div onClick={() => showSidebar && setShowSidebar(!showSidebar)}>
         <Head>

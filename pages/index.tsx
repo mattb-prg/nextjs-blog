@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { Carousel } from '../components/carousel';
 import { HomePost } from '../components/home-post';
 import Layout, { siteTitle } from '../components/layout';
+import { PostsGrid } from '../components/posts-grid';
 import { TopPost } from '../components/top-post';
-import { getAllPostsFrontMatter, getPostData, IPostData } from '../lib/posts';
+import { getCategories } from '../lib/categories';
+import { getAllPostsFrontMatter, getPostData, IPostData, IPostMatter } from '../lib/posts';
 
 export async function getStaticProps() {
   const allPostMatter = getAllPostsFrontMatter()
@@ -12,15 +14,13 @@ export async function getStaticProps() {
   return {
     props: {
       posts: allPostMatter,
-      topPosts
+      topPosts,
     }
   }
 }
 
 interface IHomeProps {
-  posts: {
-    [p: string]: any
-  }
+  posts: IPostMatter[]
   topPosts: IPostData[]
 }
 export default function Home({ posts, topPosts }: IHomeProps) {
@@ -38,9 +38,7 @@ export default function Home({ posts, topPosts }: IHomeProps) {
         </section>
         <section className='container mx-auto space-y-3'>
           <h2 className='text-2xl font-bold text-center'>Posts</h2>
-          <div className='grid grid-cols-1 lg:grid-cols-3 gap-14'>
-            {posts.map((post) => <HomePost key={post.id} postMatter={post} />)}
-          </div>
+          <PostsGrid posts={posts} />
         </section>
       </div>
     </Layout>

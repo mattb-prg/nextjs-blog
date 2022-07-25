@@ -10,15 +10,13 @@ function getPostFilenames() {
     return fs.readdirSync(postsDir).filter((name) => name.includes('.md'))
 }
 
-export function getPostIds() {
+export function getPostPaths() {
     return getPostFilenames().map((filename) => filename.replace(/\.md$/, '')).map((id) => ({
         params: { id },
     }))
 }
 
-export interface IPostData {
-    [p: string]: any
-    id: string
+export interface IPostData extends IPostMatter {
     htmlContent: string
 }
 export async function getPostData(id: string): Promise<IPostData> {
@@ -33,6 +31,10 @@ export async function getPostData(id: string): Promise<IPostData> {
     }
 }
 
+export interface IPostMatter {
+    id: string
+    [p: string]: any
+}
 export function getAllPostsFrontMatter() {
     const postFilenames = getPostFilenames()
 
@@ -43,10 +45,7 @@ export function getAllPostsFrontMatter() {
         return {
             id,
             ...matter.data,
-        } as {
-            id: string,
-            [p: string]: any
-        }
+        } as IPostMatter
     }).sort(({ date: a }, { date: b }) => {
         if (a < b) {
             return 1;

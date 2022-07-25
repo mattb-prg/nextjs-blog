@@ -1,11 +1,11 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Layout from "../../components/layout";
-import { getPostData, getPostIds } from "../../lib/posts";
+import { getPostData, getPostPaths } from "../../lib/posts";
 
 export function getStaticPaths({ params }) {
     return {
-        paths: getPostIds(),
+        paths: getPostPaths(),
         fallback: false
     }
 }

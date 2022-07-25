@@ -3,6 +3,7 @@ title: 'Two Forms of Pre-rendering'
 description: 'This is a post about something'
 date: '2020-01-10'
 thumbnail: '/images/volcano.webp'
+category: 'sports'
 top: true
 ---
 

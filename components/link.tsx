@@ -9,7 +9,7 @@ interface ILinkProps {
 export const Link: FC<ILinkProps> = (props) => {
     return (
         <NextLink href={props.href}>
-            <a className="hover:underline decoration-orange-400 decoration-4">
+            <a className="hover:underline decoration-orange-400 decoration-4 ">
                 {props.children}
             </a>
         </NextLink>
