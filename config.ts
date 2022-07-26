@@ -28,4 +28,15 @@ export const firebaseConfig = {
     storageBucket: "nextjs-blog-88fc5.appspot.com",
     messagingSenderId: "5457401414",
     appId: "1:5457401414:web:4d24bc88a2062400cf1c47"
-  };
+}
+
+interface IAuthors {
+    [author: string]: {
+        name: string
+    }
+}
+export const authors: IAuthors = {
+    'matt': {
+        name: 'Matt Smith',
+    }
+}

@@ -5,7 +5,7 @@ thumbnail: '/images/plant.jpeg'
 category: 'crafts'
 date: '2020-02-02'
 premium: true
-author: 'Me'
+authorId: 'matt'
 ---
 
 We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.

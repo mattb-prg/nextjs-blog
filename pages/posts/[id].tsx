@@ -5,6 +5,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Layout from "../../components/layout";
+import { authors } from "../../config";
 import { useIsLoggedIn } from "../../hooks/useIsLoggedIn";
 import { fakePost } from "../../lib/fake-post";
 import { getPostData, getPostPaths } from "../../lib/posts";
@@ -28,13 +29,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export default function Post({ post }) {
     const {
         premium,
-        author,
+        authorId,
         date,
         title,
         description,
         htmlContent,
         thumbnail,
     } = post;
+    const author = authors[authorId]
     const isLoggedIn = useIsLoggedIn()
     const hideContent = premium && !isLoggedIn
     const wrdCount = wordCount(extractContents(htmlContent))
@@ -55,7 +57,7 @@ export default function Post({ post }) {
                         <Image className="rounded-full flex-grow" src={'/images/profile.jpg'} height={50} width={50} />
                     </div>
                     <div className="flex flex-col space-y-3">
-                        <span>{author}</span>
+                        <span>{author.name}</span>
                         <span className="text-sm text-gray-500">
                             {dateStr} · {readingTime} minute{readingTime === '1' ? '' : 's'} read time
                         </span>

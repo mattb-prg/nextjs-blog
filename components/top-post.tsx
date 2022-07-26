@@ -10,7 +10,6 @@ export const TopPost: FC<ITopPostProps> = (props) => {
     const {
         post
     } = props;
-    console.log(post)
     const link = `/posts/${post.id}`
     return (
         <div className="w-full grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 lg:items-center">
