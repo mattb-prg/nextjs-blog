@@ -20,3 +20,12 @@ export const categories: ICategory[] = [
         href: '/categories/crafts'
     },
 ]
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyBZQuli2PeqT9DmroKDuMU5HCakqVIBJQA",
+    authDomain: "nextjs-blog-88fc5.firebaseapp.com",
+    projectId: "nextjs-blog-88fc5",
+    storageBucket: "nextjs-blog-88fc5.appspot.com",
+    messagingSenderId: "5457401414",
+    appId: "1:5457401414:web:4d24bc88a2062400cf1c47"
+  };
