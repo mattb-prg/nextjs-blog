@@ -6,13 +6,17 @@ export function useIsLoggedIn() {
 
     useEffect(() => {
         console.log('client only')
-        onAuthStateChanged(getAuth(), (auth) => {
+        const unsub = onAuthStateChanged(getAuth(), (auth) => {
             if (auth) {
                 setIsLoggedIn(true)
             } else {
                 setIsLoggedIn(false)
             }
         })
+
+        return () => {
+            unsub()
+        }
     }, [])
 
     return isLoggedIn

@@ -33,7 +33,7 @@ export const User: FC<{}> = (props) => {
         main()
     }
     return (
-        <span className="w-4 cursor-pointer">
+        <span className="w-4 cursor-pointer outline-none">
             {
                 (isChangingAuth || isLoggedIn === undefined) && (
                     <FontAwesomeIcon className="animate-spin" icon={faSpinner} />
