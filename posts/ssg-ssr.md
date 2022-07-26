@@ -4,6 +4,7 @@ description: 'This is a post about something'
 thumbnail: '/images/plant.jpeg'
 category: 'crafts'
 date: '2020-01-02'
+author: 'Me'
 ---
 
 We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.

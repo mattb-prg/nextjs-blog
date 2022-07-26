@@ -5,6 +5,7 @@ date: '2020-01-10'
 thumbnail: '/images/volcano.webp'
 category: 'sports'
 top: true
+author: 'Me'
 ---
 
 Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
