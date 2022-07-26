@@ -47,41 +47,46 @@ export default function Post({ post }) {
             <Head>
                 <title>{premium && 'Premium'}{title}</title>
             </Head>
-            <article className="container mx-auto flex flex-col space-y-6 max-w-[65ch]">
+            <article className="container mx-auto flex flex-col items-center space-y-6">
                 <div className="flex flex-col space-y-2 text-center">
                     <h1 className="text-2xl font-bold">{premium && 'Premium: '}{title}</h1>
-                    <span className="italic text-lg">{description}</span>
                 </div>
-                <div className="flex h-20 space-x-3">
-                    <div>
-                        <Image className="rounded-full flex-grow" src={'/images/profile.jpg'} height={50} width={50} />
+                <div className="max-w-[65ch] space-y-6">
+                    <div className="flex flex-col justify-center items-center space-y-2">
+                        <Image className="rounded" src={thumbnail} height={400} width={600} />
+                        <span className="italic text-lg">{description}</span>
                     </div>
-                    <div className="flex flex-col space-y-3">
-                        <span>{author.name}</span>
-                        <span className="text-sm text-gray-500">
-                            {dateStr} · {readingTime} minute{readingTime === '1' ? '' : 's'} read time
-                        </span>
+                    <div className="flex h-20 space-x-3">
+                        <div>
+                            <Image className="rounded-full flex-grow" src={'/images/profile.jpg'} height={50} width={50} />
+                        </div>
+                        <div className="flex flex-col space-y-3">
+                            <span>{author.name}</span>
+                            <span className="text-sm text-gray-500">
+                                {dateStr} · {readingTime} minute{readingTime === '1' ? '' : 's'} read time
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div className={"flex justify-center relative"}>
-                    <div className={
-                        classNames('prose', {
-                            'blur': hideContent
-                        })
-                    } dangerouslySetInnerHTML={{ __html: hideContent ? fakePost : htmlContent }}>
+                    <div className={"flex justify-center relative"}>
+                        <div className={
+                            classNames('prose', {
+                                'blur select-none': hideContent,
+                            })
+                        } dangerouslySetInnerHTML={{ __html: hideContent ? fakePost : htmlContent }}>
+                        </div>
+                        {
+                            premium && isLoggedIn === false && (
+                                <div className="absolute top-5 flex space-x-2 items-center font-bold border-black p-3 border-2">
+                                    <span className="w-4 text-orange-500">
+                                        <FontAwesomeIcon icon={faLock} />
+                                    </span>
+                                    <span>
+                                        Please log in to view content
+                                    </span>
+                                </div>
+                            )
+                        }
                     </div>
-                    {
-                        premium && isLoggedIn === false && (
-                            <div className="absolute top-5 flex space-x-2 items-center font-bold border-black p-3 border-2">
-                                <span className="w-4 text-orange-500">
-                                    <FontAwesomeIcon icon={faLock} />
-                                </span>
-                                <span>
-                                    Please log in to view content
-                                </span>
-                            </div>
-                        )
-                    }
                 </div>
             </article>
         </Layout >
