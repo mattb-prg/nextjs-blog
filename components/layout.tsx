@@ -71,9 +71,9 @@ const Layout: FC<ILayoutProps> = ({
         <div className='border-b'></div>
         <main className='py-4 px-3'>{children}</main>
         <div className='border-b-4'></div>
-        <div className='py-4 flex flex-col space-y-4 bg-slate-700'>
+        <div className='py-10 flex flex-col space-y-4 bg-slate-700'>
           <div className='space-x-4 flex justify-center fill-white'>
-            <Social />
+            <Social hideLogin />
           </div>
           <p className='text-center text-white'>Copyright © 2022 All rights reserved </p>
         </div>
