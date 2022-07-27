@@ -29,7 +29,12 @@ export const HomePost: FC<IHomePostProps> = (props) => {
                 </Link>
             </div>
             <div className="flex flex-col space-y-2">
-                <span><span className="font-bold">{category}</span> - <span className="font-light text-slate-400">{date}</span></span>
+                <span>
+                    <Link href={`/categories/${category}`}>
+                        <span className="font-bold">{category}</span>
+                    </Link>
+                    {' - '}
+                    <span className="font-light text-slate-400">{date}</span></span>
                 <div className="flex flex-col space-y-1">
                     <Link href={link}>
                         <span className="font-bold text-lg">{premium && 'Premium: '}{title}</span>

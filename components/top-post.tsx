@@ -8,7 +8,7 @@ interface ITopPostProps {
 }
 export const TopPost: FC<ITopPostProps> = (props) => {
     const {
-        post
+        post,
     } = props;
     const link = `/posts/${post.id}`
     return (
@@ -19,7 +19,14 @@ export const TopPost: FC<ITopPostProps> = (props) => {
                 </Link>
             </div>
             <div className="flex flex-col space-y-4">
-                <span><span className="font-bold">Business, travel</span> - <span className="font-light text-slate-400">{post.date}</span></span>
+                <span>
+                    <span className="font-bold">
+                        <Link href={`/categories/${post.category}`}>
+                            <span className="font-bold">{post.category}</span>
+                        </Link>
+                    </span>
+                    {' - '}
+                    <span className="font-light text-slate-400">{post.date}</span></span>
                 <div className="flex flex-col space-y-2">
                     <Link href={link}>
                         <span className="font-bold text-2xl lg:text-3xl">{post.title}</span>
