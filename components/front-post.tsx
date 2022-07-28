@@ -1,8 +1,8 @@
 import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { FC } from "react";
 import { useIsLoggedIn } from "../hooks/useIsLoggedIn";
+import { Icon } from "./icon";
 import { Link } from "./link";
 
 interface IHomePostProps {
@@ -43,8 +43,8 @@ export const FrontPost: FC<IHomePostProps> = (props) => {
                     </div>
                     {
                         premium && (
-                            <div className="w-3 text-orange-600">
-                                <FontAwesomeIcon icon={isLoggedIn ? faUnlock : faLock} />
+                            <div className="w-3 fill-orange-600">
+                                <Icon icon={isLoggedIn ? faUnlock : faLock} />
                             </div>
                         )
                     }

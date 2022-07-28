@@ -1,8 +1,8 @@
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import Link from "next/link";
 import { FC } from "react";
+import { Icon } from "./icon";
 
 interface IPaginationProps {
     currentPage: number
@@ -19,7 +19,7 @@ export const Pagination: FC<IPaginationProps> = (
                         'pointer-events-none opacity-50': currentPage === 1
                     })
                 }>
-                    <FontAwesomeIcon className="w-2" icon={faChevronLeft} />
+                    <Icon className="w-2" icon={faChevronLeft} />
                 </a>
             </Link>
             {
@@ -41,7 +41,7 @@ export const Pagination: FC<IPaginationProps> = (
                         'pointer-events-none opacity-50': currentPage === totalPages
                     })
                 }>
-                    <FontAwesomeIcon className="w-2" icon={faChevronRight} />
+                    <Icon className="w-2" icon={faChevronRight} />
                 </a>
             </Link>
         </div>

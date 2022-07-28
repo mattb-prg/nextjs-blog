@@ -1,6 +1,6 @@
-import { faCross, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FC, ReactNode } from "react";
+import { Icon } from "./icon";
 
 interface ISidebarProps {
     children: ReactNode
@@ -20,7 +20,7 @@ export const Sidebar: FC<ISidebarProps> = ({
         >
             <div className="flex justify-end">
                 <span className="w-3 cursor-pointer" onClick={onClose}>
-                    <FontAwesomeIcon icon={faXmark} />
+                    <Icon icon={faXmark} />
                 </span>
             </div>
             <div>

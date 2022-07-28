@@ -1,9 +1,9 @@
 import { faLock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { Icon } from "../../components/icon";
 import Layout from "../../components/layout";
 import { authors } from "../../config";
 import { useIsLoggedIn } from "../../hooks/useIsLoggedIn";
@@ -78,7 +78,7 @@ export default function Post({ post }) {
                             premium && isLoggedIn === false && (
                                 <div className="absolute top-5 flex space-x-2 items-center font-bold border-black p-3 border-2">
                                     <span className="w-4 text-orange-500">
-                                        <FontAwesomeIcon icon={faLock} />
+                                        <Icon icon={faLock} />
                                     </span>
                                     <span>
                                         Please log in to view content

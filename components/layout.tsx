@@ -1,13 +1,10 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Link as CustomLink } from '../components/link'
 import { FC, useState } from 'react';
-import { NextRouter } from 'next/router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Social } from './social';
+import { Link as CustomLink } from '../components/link';
+import { categories } from '../config';
 import { Sidebar } from './sidebar';
-import { categories, ICategory } from '../config';
+import { Social } from './social';
 
 const name = 'Your Name';
 export const siteTitle = 'Next.js Sample Website';

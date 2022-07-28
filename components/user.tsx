@@ -1,9 +1,9 @@
 import { faSignIn, faSpinner, faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { FC, useState } from "react";
 import { useIsLoggedIn } from "../hooks/useIsLoggedIn";
 import Tippy from '@tippyjs/react';
+import { Icon } from "./icon";
 
 export const User: FC<{}> = (props) => {
     const isLoggedIn = useIsLoggedIn()
@@ -36,20 +36,24 @@ export const User: FC<{}> = (props) => {
         <span className="w-4 cursor-pointer outline-none">
             {
                 (isChangingAuth || isLoggedIn === undefined) && (
-                    <FontAwesomeIcon className="animate-spin" icon={faSpinner} />
+                    <Icon className="animate-spin" icon={faSpinner} />
                 )
             }
             {
                 isLoggedIn === false && !isChangingAuth && (
                     <Tippy content={<span>Sign in</span>}>
-                        <FontAwesomeIcon icon={faSignIn} onClick={onSignIn} />
+                        <span onClick={onSignIn}>
+                            <Icon icon={faSignIn} />
+                        </span>
                     </Tippy>
                 )
             }
             {
                 isLoggedIn && !isChangingAuth && (
                     <Tippy content={<span>Sign out</span>}>
-                        <FontAwesomeIcon icon={faUser} onClick={onSignOut} />
+                        <span onClick={onSignOut}>
+                            <Icon icon={faUser} />
+                        </span>
                     </Tippy>
                 )
             }
