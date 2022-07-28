@@ -1,5 +1,8 @@
+import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { FC } from "react";
+import { useIsLoggedIn } from "../hooks/useIsLoggedIn";
 import { Link } from "./link";
 
 interface IHomePostProps {
@@ -21,6 +24,7 @@ export const FrontPost: FC<IHomePostProps> = (props) => {
         date
     } = postMatter;
     const link = `/posts/${id}`
+    const isLoggedIn = useIsLoggedIn()
     return (
         <div className="grid grid-cols-1 w-full space-y-2">
             <div>
@@ -29,12 +33,22 @@ export const FrontPost: FC<IHomePostProps> = (props) => {
                 </Link>
             </div>
             <div className="flex flex-col space-y-2">
-                <span>
-                    <Link href={`/categories/${category}`}>
-                        <span className="font-bold">{category}</span>
-                    </Link>
-                    {' - '}
-                    <span className="font-light text-slate-400">{date}</span></span>
+                <div className="flex justify-between">
+                    <div>
+                        <Link href={`/categories/${category}`}>
+                            <span className="font-bold">{category}</span>
+                        </Link>
+                        {' - '}
+                        <span className="font-light text-slate-400">{date}</span>
+                    </div>
+                    {
+                        premium && (
+                            <div className="w-3 text-orange-600">
+                                <FontAwesomeIcon icon={isLoggedIn ? faUnlock : faLock} />
+                            </div>
+                        )
+                    }
+                </div>
                 <div className="flex flex-col space-y-1">
                     <Link href={link}>
                         <div className="font-bold text-lg whitespace-nowrap overflow-hidden text-ellipsis">{premium && 'Premium: '}{title}</div>
