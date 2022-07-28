@@ -7,7 +7,7 @@ interface IHomePostProps {
         [p: string]: any
     }
 }
-export const HomePost: FC<IHomePostProps> = (props) => {
+export const FrontPost: FC<IHomePostProps> = (props) => {
     const {
         postMatter
     } = props;
@@ -37,9 +37,9 @@ export const HomePost: FC<IHomePostProps> = (props) => {
                     <span className="font-light text-slate-400">{date}</span></span>
                 <div className="flex flex-col space-y-1">
                     <Link href={link}>
-                        <span className="font-bold text-lg">{premium && 'Premium: '}{title}</span>
+                        <div className="font-bold text-lg whitespace-nowrap overflow-hidden text-ellipsis">{premium && 'Premium: '}{title}</div>
                     </Link>
-                    <span className="text-slate-500">{description}</span>
+                    <div className="text-slate-500 whitespace-nowrap overflow-hidden text-ellipsis">{description}</div>
                 </div>
             </div>
         </div>
