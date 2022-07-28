@@ -1,5 +1,6 @@
 import { FC, ReactNode, useEffect, useRef, useState } from "react";
-import classnames from 'classnames';
+import classNames from 'classnames';
+import { latestTimeout } from "../lib/utils";
 
 interface ICarouselProps {
     children: ReactNode[]
@@ -17,17 +18,14 @@ export const Carousel: FC<ICarouselProps> = (props) => {
             setContainerWidth(container.clientWidth)
         }
     }
-    useEffect(onSetWidth)
+    useEffect(onSetWidth, [])
 
     useEffect(() => {
-        let timeout: number
+        const resizingTimeout = latestTimeout(() => setIsResizing(false), 50)
         const onWindowResize = () => {
-            window.clearTimeout(timeout)
             onSetWidth()
             setIsResizing(true)
-            timeout = window.setTimeout(() => {
-                setIsResizing(false)
-            }, 100)
+            resizingTimeout()
         }
         window.addEventListener('resize', onWindowResize)
 
@@ -51,7 +49,7 @@ export const Carousel: FC<ICarouselProps> = (props) => {
         <div ref={containerRef} className="flex flex-col items-center overflow-hidden space-y-4">
             {
                 containerWidth !== undefined && (
-                    <div className={classnames("flex relative overflow-hidden", props.className, {
+                    <div className={classNames("flex relative overflow-hidden", props.className, {
                         'transition-[left] duration-500': !isResizing
                     })}
                         style={{
@@ -60,29 +58,26 @@ export const Carousel: FC<ICarouselProps> = (props) => {
                         }}
                     >
                         {
-                            containerWidth !== undefined && props.children.map((child, i) => {
-                                return child
-                            })
+                            containerWidth !== undefined && props.children.map((child, i) => child)
                         }
                     </div>
                 )
             }
             <div className="flex space-x-1">
                 {
-                    props.children.map((_, i) => {
-                        return (
-                            <div key={i} className={
-                                classnames(
-                                    "rounded-full border w-2 h-2 bg-slate-400 cursor-pointer",
-                                    {
-                                        'bg-orange-400': i === activeSlide
-                                    }
-                                )
-                            }
-                                onClick={() => setActiveSlide(i)}
-                            ></div>
-                        )
-                    })
+                    props.children.map((_, i) => (
+                        <div key={i} className={
+                            classNames(
+                                "rounded-full border w-2 h-2 cursor-pointer",
+                                {
+                                    'bg-orange-400': i === activeSlide,
+                                    'bg-slate-400': i !== activeSlide
+                                }
+                            )
+                        }
+                            onClick={() => setActiveSlide(i)}
+                        ></div>
+                    ))
                 }
             </div>
         </div>

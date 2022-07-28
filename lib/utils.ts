@@ -11,3 +11,17 @@ export function extractContents(html: string) {
 export function wordCount(content: string) {
     return content.split(' ').length
 }
+
+/**
+ * Calls fn after timeout ms. If called again before timeout ms cancels previous timeout.
+ * @param fn 
+ * @param timeout 
+ * @returns 
+ */
+export const latestTimeout = (fn: () => void, timeout: number) => {
+    let int: number
+    return () => {
+        window.clearTimeout(int)
+        int = window.setTimeout(fn, timeout)
+    }
+}
