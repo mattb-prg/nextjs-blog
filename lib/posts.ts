@@ -3,6 +3,7 @@ import path from 'path'
 import gray from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html'
+import { postsPerPage } from '../config';
 
 const postsDir = path.resolve(process.cwd(), 'posts')
 
@@ -55,5 +56,25 @@ export function getAllPostsFrontMatter() {
             return 0;
         }
     })
+}
+
+export interface IFrontMatterPage {
+    page: number
+    posts: IPostMatter[]
+    next: boolean
+    totalPages: number
+}
+export function getFrontMatterPage(page = 1): IFrontMatterPage {
+    const start = (page - 1) * postsPerPage
+    const end = page * postsPerPage
+    const allPosts = getAllPostsFrontMatter()
+    const posts = allPosts.slice(start, end)
+
+    return {
+        posts,
+        page,
+        totalPages: Math.ceil(allPosts.length / postsPerPage),
+        next: end < allPosts.length
+    }
 }
 

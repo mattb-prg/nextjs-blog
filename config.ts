@@ -1,3 +1,5 @@
+export const postsPerPage = 3
+
 export interface ICategory {
     id: string
     name: string

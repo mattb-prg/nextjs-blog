@@ -1,29 +1,28 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { Button } from '../components/button';
 import { Carousel } from '../components/carousel';
-import { HomePost } from '../components/home-post';
 import Layout, { siteTitle } from '../components/layout';
 import { PostsGrid } from '../components/posts-grid';
 import { TopPost } from '../components/top-post';
-import { getCategories } from '../lib/categories';
-import { getAllPostsFrontMatter, getPostData, IPostData, IPostMatter } from '../lib/posts';
+import { getAllPostsFrontMatter, getFrontMatterPage, getPostData, IFrontMatterPage, IPostData, IPostMatter } from '../lib/posts';
 
 export async function getStaticProps() {
   const allPostMatter = getAllPostsFrontMatter()
   const topPosts = await Promise.all(allPostMatter.filter((post) => post.top).map((v) => getPostData(v.id)))
   return {
     props: {
-      posts: allPostMatter,
+      page: getFrontMatterPage(1),
       topPosts,
     }
   }
 }
 
 interface IHomeProps {
-  posts: IPostMatter[]
+  page: IFrontMatterPage
   topPosts: IPostData[]
 }
-export default function Home({ posts, topPosts }: IHomeProps) {
+export default function Home({ topPosts, page }: IHomeProps) {
   return (
     <Layout home>
       <Head>
@@ -36,9 +35,18 @@ export default function Home({ posts, topPosts }: IHomeProps) {
           </div>
           <Carousel children={topPosts.map((tp) => <TopPost key={tp.id} post={tp} />)} />
         </section>
-        <section className='container mx-auto space-y-3'>
+        <section className='container mx-auto space-y-3 flex flex-col items-center'>
           <h2 className='text-2xl font-bold text-center'>Posts</h2>
-          <PostsGrid posts={posts} />
+          <PostsGrid posts={page.posts} />
+          {
+            page.next && (
+              <Link href='/page/2'>
+                <a>
+                  <Button>more</Button>
+                </a>
+              </Link>
+            )
+          }
         </section>
       </div>
     </Layout>

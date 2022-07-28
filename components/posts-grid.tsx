@@ -8,7 +8,7 @@ interface IPostsGridProps {
 
 export const PostsGrid: FC<IPostsGridProps> = ({ posts }) => {
     return (
-        <div className='grid grid-cols-1 lg:grid-cols-3 gap-14'>
+        <div className='w-full grid grid-cols-1 lg:grid-cols-3 gap-14'>
             {posts.map((post) => <HomePost key={post.id} postMatter={post} />)}
         </div>
     )
