@@ -2,10 +2,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { Button } from '../components/button';
 import { Carousel } from '../components/carousel';
-import Layout, { siteTitle } from '../components/layout';
+import Layout from '../components/layout';
 import { PostsGrid } from '../components/posts-grid';
+import { Title } from '../components/title';
 import { TopPost } from '../components/top-post';
 import { getAllPostsFrontMatter, getFrontMatterPage, getPostData, IFrontMatterPage, IPostData, IPostMatter } from '../lib/posts';
+import { createTitle } from '../lib/utils';
 
 export async function getStaticProps() {
   const allPostMatter = getAllPostsFrontMatter()
@@ -26,7 +28,7 @@ export default function Home({ topPosts, page }: IHomeProps) {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{createTitle('Home')}</title>
       </Head>
       <div className='space-y-14'>
         <section className='container mx-auto space-y-7'>

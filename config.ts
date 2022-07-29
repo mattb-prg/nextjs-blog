@@ -1,3 +1,25 @@
+import { faFacebook, faInstagram, faTwitter, IconDefinition } from '@fortawesome/free-brands-svg-icons';
+
+export const title = 'MyBlog'
+interface ISocials {
+    href: string
+    icon: IconDefinition
+}
+export const socials: ISocials[] = [
+    {
+        href: 'https://www.facebook.com',
+        icon: faFacebook
+    },
+    {
+        href: 'https://www.twitter.com',
+        icon: faTwitter
+    },
+    {
+        href: 'https://www.instagram.com',
+        icon: faInstagram
+    }
+]
+
 export const postsPerPage = 3
 
 export interface ICategory {

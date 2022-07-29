@@ -2,12 +2,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { FC, useState } from 'react';
 import { Link as CustomLink } from '../components/link';
-import { categories } from '../config';
+import { categories, title } from '../config';
 import { Sidebar } from './sidebar';
 import { Social } from './social';
-
-const name = 'Your Name';
-export const siteTitle = 'Next.js Sample Website';
+import { User } from './user';
 
 interface ILayoutProps {
   children: React.ReactNode
@@ -24,6 +22,21 @@ const Layout: FC<ILayoutProps> = ({
 
   return (
     <>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Learn how to build a personal website using Next.js"
+        />
+        <meta
+          property="og:image"
+          content={`https://og-image.vercel.app/${encodeURI(
+            title,
+          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+        />
+        <meta name="og:title" content={title} />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
       <Sidebar show={showSidebar} onClose={() => setShowSidebar(false)} >
         <div className='flex flex-col items-center space-y-3'>
           <CustomLink href={'/'}>
@@ -37,21 +50,6 @@ const Layout: FC<ILayoutProps> = ({
         </div>
       </Sidebar>
       <div onClick={() => showSidebar && setShowSidebar(!showSidebar)}>
-        <Head>
-          <link rel="icon" href="/favicon.ico" />
-          <meta
-            name="description"
-            content="Learn how to build a personal website using Next.js"
-          />
-          <meta
-            property="og:image"
-            content={`https://og-image.vercel.app/${encodeURI(
-              siteTitle,
-            )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-          />
-          <meta name="og:title" content={siteTitle} />
-          <meta name="twitter:card" content="summary_large_image" />
-        </Head>
         <div className='container mx-auto justify-center items-center'>
           <header className='grid grid-cols-3 items-center py-6 px-3'>
             <span className='w-4 cursor-pointer hover:fill-orange-700' onClick={onShowSidebar}>
@@ -62,6 +60,7 @@ const Layout: FC<ILayoutProps> = ({
             </Link>
             <div className='space-x-4 flex justify-end'>
               <Social />
+              <User />
             </div>
           </header>
         </div>
@@ -70,7 +69,7 @@ const Layout: FC<ILayoutProps> = ({
         <div className='border-b-4'></div>
         <div className='py-10 flex flex-col space-y-4 bg-slate-700'>
           <div className='space-x-4 flex justify-center fill-white'>
-            <Social hideLogin />
+            <Social />
           </div>
           <p className='text-center text-white'>Copyright © 2022 All rights reserved </p>
         </div>

@@ -5,11 +5,12 @@ import Head from "next/head";
 import Image from "next/image";
 import { Icon } from "../../components/icon";
 import Layout from "../../components/layout";
+import { Title } from "../../components/title";
 import { authors } from "../../config";
 import { useIsLoggedIn } from "../../hooks/useIsLoggedIn";
 import { fakePost } from "../../lib/fake-post";
 import { getPostData, getPostPaths } from "../../lib/posts";
-import { extractContents, wordCount } from "../../lib/utils";
+import { createTitle, extractContents, wordCount } from "../../lib/utils";
 
 export function getStaticPaths({ params }) {
     return {
@@ -45,7 +46,7 @@ export default function Post({ post }) {
     return (
         <Layout>
             <Head>
-                <title>{premium && 'Premium'}{title}</title>
+                <title>{createTitle(title)}</title>
             </Head>
             <article className="container mx-auto flex flex-col items-center space-y-6">
                 <div className="flex flex-col space-y-2 text-center">

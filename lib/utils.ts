@@ -1,3 +1,5 @@
+import { title } from "../config"
+
 // https://gist.github.com/AoiYamada/f7a22f637ce9be57efc30b1f7aead45c
 export function extractContents(html: string) {
     return html
@@ -18,10 +20,14 @@ export function wordCount(content: string) {
  * @param timeout 
  * @returns 
  */
-export const latestTimeout = (fn: () => void, timeout: number) => {
+export function latestTimeout(fn: () => void, timeout: number) {
     let int: number
     return () => {
         window.clearTimeout(int)
         int = window.setTimeout(fn, timeout)
     }
+}
+
+export function createTitle(content: string) {
+    return `${title} - ${content}`
 }
