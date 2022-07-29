@@ -1,7 +1,6 @@
 import { AppProps } from 'next/app'
 import { FC, useEffect } from 'react'
 import '../styles/global.css'
-import 'tippy.js/dist/tippy.css';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config';
 
