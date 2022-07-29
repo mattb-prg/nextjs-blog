@@ -1,9 +1,9 @@
 ---
 title: 'Great Post Title'
 description: 'This is a post about something'
-thumbnail: '/images/plant.jpeg'
+thumbnail: '/images/hill.jpg'
 category: 'crafts'
-date: '2020-02-02'
+date: '2022-02-02'
 premium: true
 authorId: 'matt'
 ---

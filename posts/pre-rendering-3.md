@@ -1,9 +1,9 @@
 ---
 title: 'Two Forms of Pre-rendering'
 description: 'This is a post about something'
-date: '2020-01-10'
-thumbnail: '/images/lake.jpg'
-category: 'sports'
+date: '2020-01-01'
+thumbnail: '/images/woods.jpg'
+category: 'writing'
 top: true
 authorId: 'matt'
 ---

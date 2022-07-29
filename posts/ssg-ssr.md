@@ -1,7 +1,7 @@
 ---
 title: 'When to Use Static Generation v.s. Server-side Rendering'
 description: 'This is a post about something'
-thumbnail: '/images/plant.jpeg'
+thumbnail: '/images/waterfall.jpg'
 category: 'crafts'
 date: '2020-01-02'
 authorId: 'matt'

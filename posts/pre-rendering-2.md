@@ -2,7 +2,7 @@
 title: 'Two Forms of Pre-rendering'
 description: 'This is a post about something'
 date: '2020-01-01'
-thumbnail: '/images/plant.jpeg'
+thumbnail: '/images/mountain.jpg'
 category: 'writing'
 top: true
 authorId: 'matt'
