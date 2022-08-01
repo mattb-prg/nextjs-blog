@@ -18,8 +18,10 @@ export const Carousel: FC<ICarouselProps> = (props) => {
             setContainerWidth(container.clientWidth)
         }
     }
+
     useEffect(onSetWidth, [])
 
+    // Set the container width on resize
     useEffect(() => {
         const resizingTimeout = latestTimeout(() => setIsResizing(false), 50)
         const onWindowResize = () => {
@@ -34,6 +36,7 @@ export const Carousel: FC<ICarouselProps> = (props) => {
         }
     }, [])
 
+    // Rotate slides every 5s
     useEffect(() => {
         const int = window.setTimeout(() => {
             const nextSlide = activeSlide === (slideCount - 1) ? 0 : activeSlide + 1
@@ -46,7 +49,7 @@ export const Carousel: FC<ICarouselProps> = (props) => {
     }, [activeSlide])
 
     return (
-        <div ref={containerRef} className="flex flex-col items-center overflow-hidden space-y-4">
+        <div ref={containerRef} className="flex flex-col overflow-hidden space-y-4">
             {
                 containerWidth !== undefined && (
                     <div className={classNames("flex relative overflow-hidden", props.className, {
@@ -54,7 +57,7 @@ export const Carousel: FC<ICarouselProps> = (props) => {
                     })}
                         style={{
                             width: containerWidth * props.children.length,
-                            left: (containerWidth / 2) - (activeSlide * containerWidth)
+                            left: 0 - (activeSlide * containerWidth)
                         }}
                     >
                         {
@@ -63,7 +66,7 @@ export const Carousel: FC<ICarouselProps> = (props) => {
                     </div>
                 )
             }
-            <div className="flex space-x-1">
+            <div className="flex space-x-1 self-center">
                 {
                     props.children.map((_, i) => (
                         <div key={i} className={
