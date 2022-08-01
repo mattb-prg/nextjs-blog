@@ -29,7 +29,7 @@ export const FrontPost: FC<IHomePostProps> = (props) => {
         <div className="grid grid-cols-1 w-full space-y-2">
             <div>
                 <Link href={link}>
-                    <Image className="rounded-md" src={thumbnail} width={1000} height={700} priority={true} />
+                    <Image className="rounded-md" src={thumbnail} width={1000} height={700} priority={true} alt={title} />
                 </Link>
             </div>
             <div className="flex flex-col space-y-2">

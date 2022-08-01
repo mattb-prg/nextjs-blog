@@ -53,12 +53,12 @@ export default function Post({ post }) {
                 </div>
                 <div className="max-w-[65ch] space-y-6">
                     <div className="flex flex-col justify-center items-center space-y-2">
-                        <Image className="rounded" src={thumbnail} height={400} width={600} />
+                        <Image className="rounded" src={thumbnail} height={400} width={600} alt={title} />
                         <span className="italic text-lg">{description}</span>
                     </div>
                     <div className="flex h-20 space-x-3">
                         <div>
-                            <Image className="rounded-full flex-grow" src={'/images/profile.jpg'} height={50} width={50} />
+                            <Image className="rounded-full flex-grow" src={'/images/profile.jpg'} height={50} width={50} alt={title} />
                         </div>
                         <div className="flex flex-col space-y-3">
                             <span>{author.name}</span>

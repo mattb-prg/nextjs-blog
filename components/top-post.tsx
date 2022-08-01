@@ -15,7 +15,7 @@ export const TopPost: FC<ITopPostProps> = (props) => {
         <div className="w-full grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 lg:items-center">
             <div>
                 <Link href={link}>
-                    <Image className="rounded-md" src={post.thumbnail} width={1000} height={700} priority={true}/>
+                    <Image className="rounded-md" src={post.thumbnail} width={1000} height={700} priority={true} title={post.title} />
                 </Link>
             </div>
             <div className="flex flex-col space-y-4">
