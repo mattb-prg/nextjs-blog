@@ -1,5 +1,5 @@
 import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
+import Image from 'next-image-export-optimizer';
 import { FC } from "react";
 import { useIsLoggedIn } from "../hooks/useIsLoggedIn";
 import { Icon } from "./icon";
@@ -29,7 +29,7 @@ export const FrontPost: FC<IHomePostProps> = (props) => {
         <div className="grid grid-cols-1 w-full space-y-2">
             <div>
                 <Link href={link}>
-                    <Image className="rounded-md" src={thumbnail} layout='responsive' height={350} width={500} />
+                    <Image className="rounded-md" src={thumbnail} layout='responsive' width={1000} height={700} priority={true} />
                 </Link>
             </div>
             <div className="flex flex-col space-y-2">

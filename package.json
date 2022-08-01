@@ -4,7 +4,7 @@
     "dev": "next dev",
     "build": "ANALYZE=true next build",
     "start": "next start",
-    "export": "npm run build && next export"
+    "export": "PRODUCTION=true next build && PRODUCTION=true next export && next-image-export-optimizer"
   },
   "dependencies": {
     "classnames": "^2.3.1",
@@ -27,6 +27,7 @@
     "mobx": "^6.6.1",
     "mobx-react-lite": "^3.4.0",
     "mobx-state-tree": "^5.1.5",
+    "next-image-export-optimizer": "^0.12.1",
     "postcss": "^8.4.14",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",

@@ -1,11 +1,10 @@
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 import { GetStaticProps } from "next";
+import Image from "next-image-export-optimizer";
 import Head from "next/head";
-import Image from "next/image";
 import { Icon } from "../../components/icon";
 import Layout from "../../components/layout";
-import { Title } from "../../components/title";
 import { authors } from "../../config";
 import { useIsLoggedIn } from "../../hooks/useIsLoggedIn";
 import { fakePost } from "../../lib/fake-post";

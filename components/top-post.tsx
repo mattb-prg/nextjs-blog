@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next-image-export-optimizer"
 import { FC } from "react"
 import { IPostData } from "../lib/posts"
 import { Link } from "./link"
@@ -15,7 +15,7 @@ export const TopPost: FC<ITopPostProps> = (props) => {
         <div className="w-full grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 lg:items-center">
             <div>
                 <Link href={link}>
-                    <Image className="rounded-md" src={post.thumbnail} layout='responsive' width={1180} height={885} />
+                    <Image className="rounded-md" src={post.thumbnail} layout='responsive' width={1000} height={700} priority={true}/>
                 </Link>
             </div>
             <div className="flex flex-col space-y-4">
