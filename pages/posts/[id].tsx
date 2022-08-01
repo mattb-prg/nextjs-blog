@@ -58,7 +58,7 @@ export default function Post({ post }) {
                     </div>
                     <div className="flex h-20 space-x-3">
                         <div>
-                            <Image className="rounded-full flex-grow" src={'/images/profile.jpg'} height={50} width={50} alt={title} />
+                            <Image className="rounded-full flex-grow" src={'/images/profile.jpg'} height={50} width={50} alt={'Profile'} />
                         </div>
                         <div className="flex flex-col space-y-3">
                             <span>{author.name}</span>

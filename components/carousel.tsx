@@ -61,7 +61,17 @@ export const Carousel: FC<ICarouselProps> = (props) => {
                         }}
                     >
                         {
-                            containerWidth !== undefined && props.children.map((child, i) => child)
+                            props.children
+                        }
+                    </div>
+                )
+            }
+            {/* For first render */}
+            {
+                containerWidth === undefined && (
+                    <div className="flex relative overflow-hidden">
+                        {
+                            props.children[activeSlide]
                         }
                     </div>
                 )
