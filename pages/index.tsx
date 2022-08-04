@@ -44,7 +44,7 @@ export default function Home({ topPosts, page }: IHomeProps) {
             page.next && (
               <Link href='/page/2'>
                 <a>
-                  <Button>more</Button>
+                  <Button>more posts</Button>
                 </a>
               </Link>
             )
