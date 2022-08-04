@@ -1,5 +1,6 @@
 import { faFacebook, faInstagram, faTwitter, IconDefinition } from '@fortawesome/free-brands-svg-icons';
 
+export const imageSizes = '(max-width: 500px) 320px, 640px'
 export const title = 'MyBlog'
 interface ISocials {
     href: string

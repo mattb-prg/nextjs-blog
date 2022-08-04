@@ -1,5 +1,6 @@
-import Image from "next-image-export-optimizer"
+import Image from "next/image"
 import { FC } from "react"
+import { imageSizes } from "../config"
 import { IPostData } from "../lib/posts"
 import { Link } from "./link"
 
@@ -11,11 +12,14 @@ export const TopPost: FC<ITopPostProps> = (props) => {
         post,
     } = props;
     const link = `/posts/${post.id}`
+    const imageSrc = require('../public' + post.thumbnail + '?resize&sizes[]=500&sizes[]=650&sizes[]=760&format=webp')
+    const imgSizes = '(min-width: 640px): 650px, (min-width: 768px): 760px, (min-width: 1024px): 500px, (min-width: 1280px): 650px, (min-width: 1538px): 760px, 100vw'
     return (
         <div className="w-full grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 lg:items-center">
             <div>
                 <Link href={link}>
-                    <Image className="rounded-md" src={post.thumbnail} width={1000} height={700} priority={true} title={post.title} />
+                    <img className="rounded-md" sizes={imgSizes} src={imageSrc.src} srcSet={imageSrc.srcSet} width={1000} height={700} alt={post.title} />
+                    {/* <Image className="rounded-md" src={post.thumbnail} width={1000} height={700} title={post.title} /> */}
                 </Link>
             </div>
             <div className="flex flex-col space-y-4">

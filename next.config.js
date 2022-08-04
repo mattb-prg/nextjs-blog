@@ -1,17 +1,14 @@
+const withOptimizedImages = require('next-optimized-images');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: process.env.ANALYZE === 'true',
 })
-module.exports = withBundleAnalyzer(process.env.PRODUCTION === 'true' ? {
+module.exports = withOptimizedImages({
+    handleImages: ['ico', 'png', 'jpg', 'jpeg', 'webp', 'svg'],
+    responsive: {
+        adapter: require("responsive-loader/sharp"),
+        sizes: [320, 640, 960, 1200, 1800, 2400]
+    },
     images: {
-        loader: "custom",
-        imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-        deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+        disableStaticImages: true,
     },
-    env: {
-        nextImageExportOptimizer_imageFolderPath: "public/images",
-        nextImageExportOptimizer_exportFolderPath: "out",
-        nextImageExportOptimizer_quality: 75,
-        nextImageExportOptimizer_storePicturesInWEBP: true,
-        nextImageExportOptimizer_generateAndUseBlurImages: true,
-    },
-} : {})
+})
