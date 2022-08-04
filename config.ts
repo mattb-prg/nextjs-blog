@@ -3,19 +3,23 @@ import { faFacebook, faInstagram, faTwitter, IconDefinition } from '@fortawesome
 export const imageSizes = '(max-width: 500px) 320px, 640px'
 export const title = 'MyBlog'
 interface ISocials {
+    title: string
     href: string
     icon: IconDefinition
 }
 export const socials: ISocials[] = [
     {
+        title: 'Facebook',
         href: 'https://www.facebook.com',
         icon: faFacebook
     },
     {
+        title: 'Twitter',
         href: 'https://www.twitter.com',
         icon: faTwitter
     },
     {
+        title: 'Instagram',
         href: 'https://www.instagram.com',
         icon: faInstagram
     }

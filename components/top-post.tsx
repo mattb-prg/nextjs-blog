@@ -30,7 +30,7 @@ export const TopPost: FC<ITopPostProps> = (props) => {
                         </Link>
                     </span>
                     {' - '}
-                    <span className="font-light text-slate-400">{post.date}</span></span>
+                    <span className="font-light text-sm text-slate-700">{post.date}</span></span>
                 <div className="flex flex-col space-y-2">
                     <Link href={link}>
                         <span className="font-bold text-2xl lg:text-3xl">{post.title}</span>

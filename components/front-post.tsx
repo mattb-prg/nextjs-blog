@@ -1,7 +1,5 @@
 import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
-import Image from 'next/image';
 import { FC } from "react";
-import { imageSizes } from "../config";
 import { useIsLoggedIn } from "../hooks/useIsLoggedIn";
 import { Icon } from "./icon";
 import { Link } from "./link";
@@ -43,7 +41,7 @@ export const FrontPost: FC<IHomePostProps> = (props) => {
                             <span className="font-bold">{category}</span>
                         </Link>
                         {' - '}
-                        <span className="font-light text-slate-400">{date}</span>
+                        <span className="font-light text-sm text-slate-700">{date}</span>
                     </div>
                     {
                         premium && (

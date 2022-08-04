@@ -6,9 +6,15 @@ import { FC } from "react";
 interface IIconProps {
     icon: IconDefinition
     className?: string
+    title?: string
 }
-export const Icon: FC<IIconProps> = ({ icon, className }) => {
+export const Icon: FC<IIconProps> = ({ icon, className, title }) => {
     return (
-        <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${icon.icon[0]} ${icon.icon[1]}`}><path d={icon.icon[4] as string} /></svg>
+        <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${icon.icon[0]} ${icon.icon[1]}`}>
+            {title && (
+                <title>{title}</title>
+            )}
+            <path d={icon.icon[4] as string} />
+        </svg>
     )
 }
