@@ -4,8 +4,7 @@
     "dev": "next dev",
     "build": "ANALYZE=true next build",
     "start": "next start",
-    "ex": "next export",
-    "export": "PRODUCTION=true next build && PRODUCTION=true next export && next-image-export-optimizer"
+    "export": "next build && next export"
   },
   "dependencies": {
     "classnames": "^2.3.1",
